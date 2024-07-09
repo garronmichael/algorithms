@@ -70,6 +70,6 @@ var maxProfit2 = function(prices) {
     return profit
 };
 
-console.log(maxProfit([7,1,5,3,6,4]), "Expected 7")
-console.log(maxProfit([1,2,3,4,5]), "Expected 4")
-console.log(maxProfit([7,6,4,3,1]), "Expected 0")
+console.log(maxProfit2([7,1,5,3,6,4]), "Expected 7")
+console.log(maxProfit2([1,2,3,4,5]), "Expected 4")
+console.log(maxProfit2([7,6,4,3,1]), "Expected 0")
