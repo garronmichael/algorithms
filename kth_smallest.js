@@ -44,10 +44,11 @@ var kthSmallest = function(root, k) {
     getValues(root)
 
     function getValues(node) {
-        values.push(node.val)
+        
         if (node.left) getValues(node.left)
+        values.push(node.val)
         if (node.right) getValues(node.right)
     }
 
-    return values.sort((a, b) => a - b)[k - 1]
+    return values[k - 1]
 };
