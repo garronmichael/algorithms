@@ -29,7 +29,6 @@ strs[i] consists of only lowercase English letters.
  */
 var longestCommonPrefix = function(strs) {
     let output = ""
-    strs.sort((a, b) => b.length - a.length)
 
     for (let i = 0; i < strs[0].length; i++) {
         output += strs[0][i]
