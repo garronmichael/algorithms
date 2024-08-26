@@ -30,10 +30,17 @@ Output: [0,1]
 var twoSum = function(nums, target) {
 
     for (let i = 0; i < nums.length; i++) {
-
-        for (let j = i + 1; j < nums.length; j++) {
+        let complement = target - nums[i]
+        let compIdx = nums.indexOf(complement, i + 1)
              
-             if (target === nums[i] + nums[j]) return [i, j]
-        }
+        if (compIdx > -1) return [i, compIdx]
     }
+
+    // for (let i = 0; i < nums.length; i++) {
+
+    //     for (let j = i + 1; j < nums.length; j++) {
+             
+    //          if (target === nums[i] + nums[j]) return [i, j]
+    //     }
+    // }
 };
