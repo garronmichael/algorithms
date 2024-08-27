@@ -81,6 +81,6 @@ var twoSum2 = function(numbers, target) {
     }
 };
 
-console.log(twoSum([2,7,11,15], 9), "Expected [1,2]")
-console.log(twoSum([2,3,4], 6), "Expected [1,3]")
-console.log(twoSum([-1,0], -1), "Expected [1,2]")
+console.log(twoSum2([2,7,11,15], 9), "Expected [1,2]")
+console.log(twoSum2([2,3,4], 6), "Expected [1,3]")
+console.log(twoSum2([-1,0], -1), "Expected [1,2]")
