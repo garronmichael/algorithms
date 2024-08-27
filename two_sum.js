@@ -29,12 +29,41 @@ Output: [0,1]
  */
 var twoSum = function(nums, target) {
 
+    // single pass hash
+    const hash = {}
+
     for (let i = 0; i < nums.length; i++) {
-        let complement = target - nums[i]
-        let compIdx = nums.indexOf(complement, i + 1)
-             
-        if (compIdx > -1) return [i, compIdx]
+        if (hash[target - nums[i]] > -1 && hash[target - nums[i]] !== i) {
+            return [i, hash[target - nums[i]]]
+        }
+
+        hash[nums[i]] = i
     }
+
+    // two pass hash
+    // let hash = {}
+
+    // for (let i = 0; i < nums.length; i++) {
+    //     hash[nums[i]] = i
+    // }
+
+    // for (let i = 0; i < nums.length; i++) {
+    //     if (hash[target - nums[i]] && hash[target - nums[i]] !== i) {
+    //         return [i, hash[target - nums[i]]]
+    //     }
+    // }
+
+
+    // brute force
+
+    // for (let i = 0; i < nums.length; i++) {
+    //     let complement = target - nums[i]
+    //     let compIdx = nums.indexOf(complement, i + 1)
+             
+    //     if (compIdx > -1) return [i, compIdx]
+    // }
+
+    // brute force
 
     // for (let i = 0; i < nums.length; i++) {
 
