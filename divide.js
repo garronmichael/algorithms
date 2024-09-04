@@ -33,37 +33,65 @@ divisor != 0
  * @return {number}
  */
 var divide = function(dividend, divisor) {
+
+    // still too slow but not so many conditions
     let quotient = 0
+    let positives = 0
+    const MAX_INT = 2147483647
+    const MIN_INT = -2147483648
+    
 
-    if (dividend === 0) return 0
+    if (dividend === MIN_INT && divisor === -1) return MAX_INT
 
-    if (dividend > 0 && divisor > 0) {
-        while (dividend >= divisor) {
-            dividend -= divisor
-            quotient++
-        }
-
-        return quotient
+    if (dividend > 0) {
+        positives++
+        dividend = -dividend
+    }
+    
+    if (divisor > 0) {
+        positives++
+        divisor = -divisor
     }
 
-    if ((dividend < 0 && divisor > 0 ) || (dividend > 0 && divisor < 0 )) {
-        dividend = dividend < 0 ? -dividend : dividend
-        divisor = divisor < 0 ? -divisor : divisor
-
-        while (dividend >= divisor) {
-            dividend -= divisor
-            quotient++
-        }
-
-        return -quotient
+    while (dividend <= divisor) {
+        dividend -= divisor
+        quotient++
     }
 
-    if (dividend < 0 && divisor < 0) {
-        while (dividend <= divisor) {
-            dividend -= divisor
-            quotient++
-        }
+    return positives % 2 === 0 ? quotient : -quotient
 
-        return quotient
-    }
+    // naive solution
+    // let quotient = 0
+
+    // if (dividend === 0) return 0
+
+    // if (dividend > 0 && divisor > 0) {
+    //     while (dividend >= divisor) {
+    //         dividend -= divisor
+    //         quotient++
+    //     }
+
+    //     return quotient
+    // }
+
+    // if ((dividend < 0 && divisor > 0 ) || (dividend > 0 && divisor < 0 )) {
+    //     dividend = dividend < 0 ? -dividend : dividend
+    //     divisor = divisor < 0 ? -divisor : divisor
+
+    //     while (dividend >= divisor) {
+    //         dividend -= divisor
+    //         quotient++
+    //     }
+
+    //     return -quotient
+    // }
+
+    // if (dividend < 0 && divisor < 0) {
+    //     while (dividend <= divisor) {
+    //         dividend -= divisor
+    //         quotient++
+    //     }
+
+    //     return quotient
+    // }
 };
