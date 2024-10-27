@@ -39,6 +39,34 @@ Constraints:
  */
 var threeSum = function(nums) {
 
+    const output = []
+    
+    nums.sort((a, b) => a - b)
+
+    for (let i = 0; i < nums.length; i++) {
+        let low = i + 1
+        let high = nums.length - 1
+        if (i > 0 && nums[i] === nums[i - 1]) continue
+
+        if (nums[i] > 0) break
+
+        while (low < high) {
+            let sum = nums[i] + nums[low] + nums[high]
+            if (sum > 0) high--
+            if (sum < 0) low++
+            if (sum === 0) {
+                output.push([nums[i], nums[low], nums[high]])
+                low++
+                high--
+                while (nums[low - 1] === nums[low] && low < high) {
+                    low++
+                }
+            }
+        }
+    }
+
+    return output
+
     // Wrong answer: time limit exceeded
     // const output = []
     // const hash = {}
