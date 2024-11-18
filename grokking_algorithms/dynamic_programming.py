@@ -1,0 +1,1 @@
+# 11.1 Yes, because the new total is now $4.5k with the guitar, iPhone and keyboard. 
