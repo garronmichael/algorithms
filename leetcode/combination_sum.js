@@ -41,33 +41,59 @@ All elements of candidates are distinct.
  * @return {number[][]}
  */
 var combinationSum = function(candidates, target) {
-    const output = []
-    const seen = new Set()
 
-    function backtrack(cur) {
-        let sum = cur.reduce((acc, cur) => acc += cur, 0)
+    // optimized solution
+    const output = []
+
+    function backtrack(cur, sum, index) {
 
         if (sum > target) return
-        
         if (sum === target) {
-            let sorted = [...cur].sort()
-
-            if (seen.has(sorted.toString())) return
-            output.push(sorted)
-            seen.add(sorted.toString())
-
+            output.push([...cur])
             return
         }
 
-        for (let i = 0; i < candidates.length; i++) {
+        for (let i = index; i < candidates.length; i++) {
             if (candidates[i] > target) continue
             cur.push(candidates[i])
-            backtrack(cur)
+            backtrack(cur, sum + candidates[i], i)
             cur.pop()
         }
     }
 
-    backtrack([])
+    backtrack([], 0, 0)
 
     return output
+
+
+    // my pass
+    // const output = []
+    // const seen = new Set()
+
+    // function backtrack(cur) {
+    //     let sum = cur.reduce((acc, cur) => acc += cur, 0) // track running sum in the recursive function rather making an O(n) every cycle
+
+    //     if (sum > target) return
+        
+    //     if (sum === target) {
+    //         let sorted = [...cur].sort() // if we don't revisit PAST candidates, we won't have duplicates since candidates are distinct and we can avoid seen checks
+
+    //         if (seen.has(sorted.toString())) return
+    //         output.push(sorted)
+    //         seen.add(sorted.toString())
+
+    //         return
+    //     }
+
+    //     for (let i = 0; i < candidates.length; i++) {
+    //         if (candidates[i] > target) continue
+    //         cur.push(candidates[i])
+    //         backtrack(cur)
+    //         cur.pop()
+    //     }
+    // }
+
+    // backtrack([])
+
+    // return output
 };
