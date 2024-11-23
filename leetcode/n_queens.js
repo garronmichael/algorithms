@@ -31,7 +31,9 @@ Constraints:
 var solveNQueens = function(n) {
     
     // did not pass tests but attempted to reimplement solution based concepts 
-    const board = new Array(n).fill(new Array(n).fill('.'))
+    // const board = new Array(n).fill(new Array(n).fill('.')) // breaks because the row arrays are all the same array instance
+    const board = Array.from({length: n}, () => Array(n).fill("."))
+
     const output = []
 
     function backtrack(row, cols, diags, antidiags, board) {
