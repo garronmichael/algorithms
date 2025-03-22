@@ -37,7 +37,7 @@ All the integers of nums are unique.
 nums is sorted and rotated between 1 and n times.
 """
 class Solution:
-    def findMin(self, nums: List[int]) -> int:
+    def findMin(self, nums: list[int]) -> int:
         left = 0
         right = len(nums) - 1
 
